@@ -99,9 +99,6 @@ class TelloController:
                 # ソケット通信エラーが発生
                 print(f"ソケット通信エラーが発生しました。エラー内容：{exc}")
 
-    # def on_close(self):
-    #     pass
-
     def get_log(self):
         """記録したログを取得"""
         return self.log
