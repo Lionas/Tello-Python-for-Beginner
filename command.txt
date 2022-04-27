@@ -1,0 +1,8 @@
+command
+mon
+mdirection 2
+takeoff
+up 50
+forward 160
+go 25 25 25 10 m1
+land
