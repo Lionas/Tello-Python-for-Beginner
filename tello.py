@@ -58,8 +58,6 @@ class TelloController:
         最後のコマンドが「OK」を受け取るまでブロックされます。
         コマンドが失敗した場合（タイムアウトまたはエラーのいずれか）、コマンドを再送しようとします。
         ：param command：送信するコマンド（文字列型）
-        ：param ip：TelloのIP（文字列型）
-        ：return：最新のコマンド応答
         """
         # 新しくコマンド履歴を生成する
         log = Stats(command, len(self.log))
