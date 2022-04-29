@@ -16,7 +16,6 @@ def process_command_line(command, tello_controller):
             sec = float(delay_time_sec)
             print(f"{sec}[秒]待機")
             time.sleep(sec)
-            pass
         else:
             # 待機以外のコマンドの場合、TELLOにコマンドを送信する
             tello_controller.send_command(command)

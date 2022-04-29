@@ -35,6 +35,7 @@ class TelloController:
         """ソケット通信でコマンドを送信する"""
         # 指定されたIPアドレス/ポートを有する相手（TELLO）にコマンドを送信する
         self.socket.sendto(command.encode('utf-8'), self.tello_address)
+
         # 送信したコマンドを表示
         print(f"コマンド {command} を {self.tello_ip} に送信しました")
 
@@ -42,8 +43,10 @@ class TelloController:
         """コマンドの最大待ち時間を経過したかどうか"""
         # 現在の時間を記憶
         now = time.time()
+
         # コマンド送信時刻からの経過時間を計算
         diff = now - start_time
+
         # 経過時間がコマンドの最大待ち時間を超えていた場合、コマンドの完了を待たずに終了する
         if diff > self.MAX_TIME_OUT:
             # 最大待ち時間を経過した
@@ -56,7 +59,6 @@ class TelloController:
         """
         指定されたIPアドレス/ポートを有する相手（TELLO）にコマンドを送信します。
         最後のコマンドが「OK」を受け取るまでブロックされます。
-        コマンドが失敗した場合（タイムアウトまたはエラーのいずれか）、コマンドを再送しようとします。
         ：param command：送信するコマンド（文字列型）
         """
         # 新しくコマンド履歴を生成する
@@ -89,8 +91,10 @@ class TelloController:
             try:
                 # ソケットからの受信
                 self.response, ip = self.socket.recvfrom(1024)
+
                 # ログ履歴の最後にレスポンスを追加
                 self.log[-1].add_response(self.response)
+
                 # レスポンスの内容を表示
                 print(f"{ip}'からの応答：{self.response}")
             except socket.error as exc:
