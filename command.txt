@@ -1,0 +1,6 @@
+command
+takeoff
+up 50
+forward 160
+go 25 25 25 10
+land
